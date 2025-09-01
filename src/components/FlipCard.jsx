@@ -6,7 +6,7 @@ export default function FlipCard({ front, back }) {
 
   return (
     <>
-      <FlipImageContainer flipped={flipped ? "flip" : ""}>
+      <FlipImageContainer $flipped={flipped ? "flip" : ""}>
         <FrontImage src={front} />
         <BackImages src={back} />
       </FlipImageContainer>
@@ -21,8 +21,8 @@ const FlipImageContainer = styled.div`
   height: 200px;
   transform-style: preserve-3d;
   transition: 0.5s;
-  transform: ${(props) =>
-    props.flipped ? "rotateY(180deg)" : "rotateY(0deg)"};
+  transform: ${({ $flipped }) =>
+    $flipped ? "rotateY(180deg)" : "rotateY(0deg)"};
 `;
 
 const FrontImage = styled.img`
