@@ -8,12 +8,14 @@ export const Card = memo(({ pokemon }) => {
   const navigate = useNavigate();
 
   return (
-    <section
-      className="w-[120px] border-1"
+    <div
+      className="grid place-items-center min-w-[180px] min-h-[180px] border p-5 rounded-md
+"
       onClick={() => navigate(`/detail/${pokemon.id}`)}
     >
-      <div>
-        {pokemon.name} <FavoriteButton pokemonId={pokemon.id} />
+      <div className="w-full flex justify-between items-center">
+        <p className="w-full pl-5 text-xl text-center">{pokemon.name}</p>
+        <FavoriteButton pokemonId={pokemon.id} />
       </div>
       {isImageLoading ? (
         <div className="w-[120px] h-[120px] leading-[120px] text-center">
@@ -21,6 +23,7 @@ export const Card = memo(({ pokemon }) => {
         </div>
       ) : null}
       <img
+        className="max-h-full max-w-full object-contain"
         onLoad={() => {
           setIsImageLoading(false);
         }}
@@ -28,6 +31,6 @@ export const Card = memo(({ pokemon }) => {
         style={{ display: isImageLoading ? "none" : "block" }}
         alt="포켓몬"
       />
-    </section>
+    </div>
   );
 });

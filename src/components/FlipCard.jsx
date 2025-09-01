@@ -1,3 +1,4 @@
+import { FlipHorizontal } from "lucide-react";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -10,15 +11,20 @@ export default function FlipCard({ front, back }) {
         <FrontImage src={front} />
         <BackImages src={back} />
       </FlipImageContainer>
-      <button onClick={() => setFlipped((prev) => !prev)}>뒤집기</button>
+      <button
+        className="cursor-pointer"
+        onClick={() => setFlipped((prev) => !prev)}
+      >
+        <FlipHorizontal className="size-5 text-neutral-400 stroke-neutral400 [&>path]:fill-transparent transition-all hover:text-green-300 hover:stroke-green-300" />
+      </button>
     </>
   );
 }
 
 const FlipImageContainer = styled.div`
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   transform-style: preserve-3d;
   transition: 0.5s;
   transform: ${({ $flipped }) =>
