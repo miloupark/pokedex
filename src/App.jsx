@@ -5,6 +5,7 @@ import { fetchMultiplePokemonById } from "./rtk/thunk";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import SplashScreen from "./pages/SplashScreen";
 import { SearchIcon } from "lucide-react";
+import NotFound from "./pages/NotFound";
 
 const Main = lazy(() => import("./pages/Main"));
 const Detail = lazy(() => import("./pages/Detail"));
@@ -49,6 +50,8 @@ function App() {
             <Route path={"/detail/:pokemonId"} element={<Detail />} />
             <Route path={"/search"} element={<Search />} />
             <Route path={"/favorite"} element={<Favorite />} />
+
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>
